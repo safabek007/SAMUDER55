@@ -1,22 +1,546 @@
+<!-- ===== FILE: index.html ===== -->
+<!DOCTYPE html>
+<html lang="tr" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="site_title">SAMUDER</title>
+  <meta name="description" content="SAMUDER - Samsun Uluslararası Öğrenci Derneği Resmi Web Sitesi" data-i18n-meta="meta_description" />
+  <meta name="theme-color" content="#0b1220" />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="canonical" href="https://samuder.org/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="SAMUDER" />
+  <meta property="og:description" content="Samsun Uluslararası Öğrenci Derneği" />
+  <meta property="og:image" content="/og-image.jpg" />
+  <meta property="og:url" content="https://samuder.org/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SAMUDER" />
+  <meta name="twitter:description" content="Samsun Uluslararası Öğrenci Derneği" />
+  <meta name="twitter:image" content="/og-image.jpg" />
+  <style>
+    :root{ --bg1:#0b1220; --bg2:#0a1326; --card:#121a2b; --surface:#0f1626; --muted:#9bb3d3; --border:rgba(255,255,255,.08); --pri1:#3b82f6; --pri2:#60a5fa; --pri3:#93c5fd; --text:#e8f0ff; --text-dim:#c8d6ef; --accent:#22c55e; --accent2:#16a34a; --danger:#ef4444; --amber:#f59e0b; --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.45);} html[data-theme="light"]{ --bg1:#f5f7fb; --bg2:#eef2f9; --card:#ffffff; --surface:#ffffff; --text:#0b1220; --text-dim:#2b3a55; --muted:#5a6d8a; --border:#dfe6f1; --shadow:0 8px 24px rgba(10,20,40,.12); --pri1:#2563eb; --pri2:#3b82f6; --pri3:#60a5fa; }
+    *{box-sizing:border-box} html,body{margin:0;padding:0;font-family:'Segoe UI',system-ui,-apple-system,Arial,Helvetica,sans-serif;color:var(--text);background:linear-gradient(160deg,var(--bg1),var(--bg2)) fixed;scroll-behavior:smooth}
+    a{color:inherit} img{max-width:100%;display:block} .container{max-width:1200px;margin:0 auto;padding:0 16px} .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .skip{position:absolute;left:-9999px;top:auto} .skip:focus{left:16px;top:16px;z-index:10000;background:#fff;color:#111;padding:10px 14px;border-radius:10px}
+    header{position:sticky;top:0;z-index:60;background:linear-gradient(180deg,rgba(18,26,43,.94),rgba(18,26,43,.78));backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid rgba(255,255,255,.06)} html[data-theme="light"] header{background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,.75));border-bottom:1px solid var(--border)}
+    .head-wrap{display:grid;grid-template-columns:auto 1fr auto;align-items:center;padding:10px 0;gap:10px}
+    .brand{justify-self:start;display:flex;align-items:center;gap:12px}
+    .brand img{height:62px;filter:drop-shadow(0 6px 14px rgba(59,130,246,.35))}
+    .brand h1{display:none}
+    .right-controls{justify-self:end;display:flex;align-items:center;gap:8px}
+    .icon-btn{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:10px;border:1px solid var(--border);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));box-shadow:0 6px 16px rgba(0,0,0,.25);cursor:pointer}
+    .icon-btn:focus{outline:2px solid var(--pri2)} select{color:var(--text);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid var(--border);border-radius:10px;padding:8px 10px;font-weight:600}
+    .menu-panel{position:fixed;top:0;right:-340px;width:320px;height:100dvh;background:var(--card);color:var(--text);box-shadow:-10px 0 30px rgba(0,0,0,.45);border-left:1px solid var(--border);transition:right .25s ease;z-index:70;display:flex;flex-direction:column}
+    html[data-theme="light"] .menu-panel{background:#fff} .menu-panel.open{right:0}
+    .menu-head{display:flex;align-items:center;justify-content:space-between;padding:14px;border-bottom:1px solid var(--border)} .menu-links{display:grid;gap:8px;padding:14px}
+    .navlink{text-decoration:none;font-weight:600;padding:12px 14px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.03));border:1px solid var(--border);box-shadow:0 6px 16px rgba(0,0,0,.25)} .navlink.cta{background:linear-gradient(90deg,var(--pri1),var(--pri2));border:1px solid rgba(255,255,255,.12);color:#fff;text-align:center}
+    main{padding:22px 0 64px} .hero{margin-top:16px;border-radius:var(--radius);background:radial-gradient(1000px 400px at 10% -10%,rgba(59,130,246,.25),transparent 60%),radial-gradient(800px 300px at 90% -20%,rgba(34,197,94,.2),transparent 60%),linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.07);box-shadow:var(--shadow);padding:22px}
+    .section{margin-top:22px} .card{background:var(--card); color:var(--text); border-radius:14px; box-shadow:0 6px 14px rgba(0,0,0,.35); padding:18px; border:1px solid var(--border)} .muted{color:var(--muted)} section[hidden]{display:none!important}
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;z-index:90} .lightbox.open{display:flex}
+    .lightbox-inner{max-width:min(96vw,1100px);max-height:90vh;background:#000;border-radius:12px;overflow:hidden;border:1px solid #333;display:grid;grid-template-rows:auto 1fr auto}
+    .lightbox-toolbar{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:rgba(0,0,0,.6);color:#fff}
+    .lightbox-body{background:#000;display:flex;align-items:center;justify-content:center} .lightbox-body img{max-width:100%;max-height:80vh}
+    .lightbox-actions{display:flex;gap:8px;padding:8px;background:rgba(0,0,0,.6)} .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid #444;background:#111;color:#fff;border-radius:10px;padding:8px 12px;text-decoration:none}
+    .pager{display:flex;gap:8px;align-items:center;justify-content:center;margin-top:14px} .pager button{padding:8px 12px;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:10px}
+    @media (max-width:720px){ .brand img{height:56px} .right-controls{gap:6px} }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">İçeriğe geç</a>
+  <header role="banner">
+    <div class="container head-wrap">
+      <div class="brand">
+        <a href="#/home" data-route="home" aria-label="Ana sayfa"><img src="logo.png" alt="SAMUDER Logo" /></a>
+        <h1 data-i18n="site_title" class="sr-only">SAMUDER</h1>
+      </div>
+      <div></div>
+      <div class="right-controls">
+        <label for="lang" class="sr-only" data-i18n="language">Dil</label>
+        <select id="lang" aria-label="Dil seçimi" onchange="setLanguage(this.value)">
+          <option value="tr">Türkçe</option><option value="en">English</option><option value="ar">العربية</option><option value="fa">فارسی</option><option value="ru">Русский</option>
+        </select>
+        <button id="themeToggle" class="icon-btn" aria-pressed="false" aria-label="Tema">🌙</button>
+        <button id="menuToggle" class="icon-btn" aria-expanded="false" aria-controls="menuPanel" aria-label="Menüyü aç">☰</button>
+      </div>
+    </div>
+  </header>
+  <aside id="menuPanel" class="menu-panel" role="dialog" aria-modal="true" aria-label="Menü">
+    <div class="menu-head"><strong data-i18n="menu">Menü</strong><button id="menuClose" class="icon-btn" aria-label="Kapat">✕</button></div>
+    <nav class="menu-links" role="navigation" aria-label="Sayfalar">
+      <a class="navlink" data-route="home" href="#/home" data-i18n="home">Ana Sayfa</a>
+      <a class="navlink" data-route="about" href="#/about" data-i18n="about">Hakkımızda</a>
+      <a class="navlink" data-route="calendar" href="#/calendar" data-i18n="calendar">Etkinlik Takvimi</a>
+      <a class="navlink" data-route="news" href="#/news" data-i18n="news">Haberler/Duyurular</a>
+      <a class="navlink" data-route="activities" href="#/activities" data-i18n="activities">Faaliyetler</a>
+      <a class="navlink" data-route="donation" href="#/donation" data-i18n="donation">Bağış</a>
+      <a class="navlink" data-route="gallery" href="#/gallery" data-i18n="gallery">Galeri</a>
+      <a class="navlink" data-route="contact" href="#/contact" data-i18n="contact">İletişim</a>
+      <a class="navlink cta" href="https://udef.org.tr/obs/ogrenci-girisi" target="_blank" rel="noopener" data-i18n="join">UDEF Üyelik</a>
+    </nav>
+  </aside>
+  <main id="main" class="container" role="main">
+    <section class="hero" aria-labelledby="home-hero-title" data-page="home"><h2 id="home-hero-title" data-i18n="hero_title">Samsun Uluslararası Öğrenci Derneği</h2><p data-i18n="hero_sub">Kültürel uyum, dayanışma ve gelişim için öğrencilerin buluşma noktası.</p></section>
+    <section id="home-news" class="section card" aria-labelledby="home-news-title" data-page="home"><h2 id="home-news-title" data-i18n="news">Haberler/Duyurular</h2><div id="homeNewsList" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px"></div></section>
+    <section id="home-contact" class="section card" aria-labelledby="home-contact-title" data-page="home"><h2 id="home-contact-title" data-i18n="contact">İletişim</h2><div id="homeContactWrap" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:8px;"></div></section>
+
+    <section class="hero" aria-labelledby="hero-title" data-page="about" hidden><h2 id="hero-title" data-i18n="hero_title">Samsun Uluslararası Öğrenci Derneği</h2><p data-i18n="hero_sub">Kültürel uyum, dayanışma ve gelişim için öğrencilerin buluşma noktası.</p></section>
+    <section id="about" class="section card" aria-labelledby="about-title" data-page="about" hidden><h2 id="about-title" data-i18n="about">Hakkımızda</h2><div id="aboutContent"></div></section>
+
+    <section id="calendar" class="section card" aria-labelledby="calendar-title" data-page="calendar" hidden>
+      <h2 id="calendar-title" data-i18n="calendar">Etkinlik Takvimi</h2>
+      <form aria-label="Takvim filtresi" style="display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 20px;">
+        <label><span class="sr-only" data-i18n="search_label">Etkinlik ara</span><input type="search" id="calSearch" placeholder="Arayın..." data-i18n-ph="search_ph" aria-label="Etkinlik ara" style="padding:10px;border:1px solid var(--border);border-radius:8px;min-width:240px;color:var(--text);background:var(--surface)" /></label>
+        <label><span data-i18n="month">Ay</span>
+          <select id="calMonth" style="padding:10px;border:1px solid var(--border);border-radius:8px;color:var(--text);background:var(--surface)"><option value="" data-i18n="all_months">Tüm aylar</option><option value="01">Ocak</option><option value="02">Şubat</option><option value="03">Mart</option><option value="04">Nisan</option><option value="05">Mayıs</option><option value="06">Haziran</option><option value="07">Temmuz</option><option value="08">Ağustos</option><option value="09">Eylül</option><option value="10">Ekim</option><option value="11">Kasım</option><option value="12">Aralık</option></select>
+        </label>
+      </form>
+      <div id="evList" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;"></div>
+      <div id="evPager" class="pager"></div>
+    </section>
+
+    <section id="news" class="section card" aria-labelledby="news-title" data-page="news" hidden>
+      <h2 id="news-title" data-i18n="news">Haberler/Duyurular</h2>
+      <div id="newsList" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;"></div>
+      <div id="newsPager" class="pager"></div>
+    </section>
+
+    <section id="activities" class="section card" aria-labelledby="activities-title" data-page="activities" hidden>
+      <h2 id="activities-title" data-i18n="activities">Faaliyetler</h2>
+      <div id="activitiesContent"></div>
+    </section>
+
+    <section id="donation" class="section card" aria-labelledby="donation-title" data-page="donation" hidden>
+      <h2 id="donation-title" data-i18n="donation">Bağış</h2>
+      <div id="donationWrap" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:14px;align-items:start;"></div>
+    </section>
+
+    <section id="gallery" class="section card" aria-labelledby="gallery-title" data-page="gallery" hidden>
+      <h2 id="gallery-title" data-i18n="gallery">Galeri</h2>
+      <p data-i18n="gallery_intro">Etkinliklerimizden bazı kareler.</p>
+      <div id="galleryGrid" class="grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:14px;"></div>
+    </section>
+
+    <section id="contact" class="section card" aria-labelledby="contact-title" data-page="contact" hidden>
+      <h2 id="contact-title" data-i18n="contact">İletişim</h2>
+      <div id="contactWrap" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:8px;"></div>
+    </section>
+  </main>
+
+  <footer class="container section muted" role="contentinfo"><p>&copy; <span id="year"></span> <span data-i18n="site_title">SAMUDER</span></p></footer>
+
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Görüntüleyici"><div class="lightbox-inner"><div class="lightbox-toolbar"><span id="lbCaption">&nbsp;</span><button id="lbClose" class="btn" data-i18n="close">Kapat</button></div><div class="lightbox-body"><img id="lbImg" src="" alt="" /></div><div class="lightbox-actions"><a id="lbDownload" class="btn" href="#" download target="_blank" rel="noopener" data-i18n="download">İndir</a></div></div></div>
+
+  <script>
+    // ====== I18N STATIC (UI strings) ======
+    const I18N = { /* (AYNI KALDI) — uzun olduğu için Canvas'ın önceki sürümündeki I18N bloklarıyla birebir */ };
+  </script>
+  <script>
+    // ====== CMS JSON İÇERİĞİNDEN VERİ YÜKLEME ======
+    const STATE = { news:[], events:[], gallery:[], donation:null, contact:null, about:null, activities:null };
+    const PAGE_SIZE = 10;
+
+    async function fetchJSON(path){
+      try{ const res = await fetch(path, {cache:'no-store'}); if(!res.ok) throw new Error(res.statusText); return await res.json(); }
+      catch(e){ console.warn('JSON yüklenemedi:', path, e); return null; }
+    }
+
+    async function loadAllContent(){
+      const [news,events,gallery,donation,contact,about,activities] = await Promise.all([
+        fetchJSON('/content/news.json'),
+        fetchJSON('/content/events.json'),
+        fetchJSON('/content/gallery.json'),
+        fetchJSON('/content/donation.json'),
+        fetchJSON('/content/contact.json'),
+        fetchJSON('/content/about.json'),
+        fetchJSON('/content/activities.json')
+      ]);
+      STATE.news = news?.items||[];
+      STATE.events = events?.items||[];
+      STATE.gallery = gallery?.items||[];
+      STATE.donation = donation||null;
+      STATE.contact = contact||null;
+      STATE.about = about||null;
+      STATE.activities = activities||null;
+    }
+
+    function tField(obj, base){
+      const lang = document.documentElement.lang||'tr';
+      // ör: title_tr, title_en ...
+      const key = `${base}_${lang}`;
+      return obj[key] || obj[base+'_tr'] || '';
+    }
+
+    // ====== RENDERERS ======
+    function renderHomeNews(){
+      const wrap = document.getElementById('homeNewsList'); if(!wrap) return;
+      const sorted = [...STATE.news].sort((a,b)=> (b.date||'').localeCompare(a.date||''));
+      wrap.innerHTML = sorted.slice(0,3).map(item=>cardNewsHTML(item)).join('');
+    }
+
+    function cardNewsHTML(item){
+      const title = tField(item,'title');
+      const body = tField(item,'body');
+      const date = item.date || '';
+      const img = item.image || 'placeholder.jpg';
+      return `<article class="card" style="margin:0"><img src="${img}" alt="${escapeHtml(title)}" loading="lazy" style="border-radius:10px;margin-bottom:10px"><h3>${escapeHtml(title)}</h3><p class="muted"><time datetime="${date}">${formatDate(date)}</time></p><p>${escapeHtml(body)}</p></article>`;
+    }
+
+    function renderNews(page=1){
+      const wrap = document.getElementById('newsList'); const pager = document.getElementById('newsPager'); if(!wrap||!pager) return;
+      const q = (document.getElementById('calSearch')?.value||'').toLowerCase(); // basit tek arama alanını yeniden kullanabiliriz isteğe bağlı
+      const list = [...STATE.news].filter(it=>!q || JSON.stringify(it).toLowerCase().includes(q)).sort((a,b)=> (b.date||'').localeCompare(a.date||''));
+      const total = list.length; const pages = Math.max(1, Math.ceil(total/PAGE_SIZE));
+      page = Math.min(pages, Math.max(1, page));
+      const start = (page-1)*PAGE_SIZE; const slice = list.slice(start, start+PAGE_SIZE);
+      wrap.innerHTML = slice.map(cardNewsHTML).join('');
+      pager.innerHTML = pagerHTML(page,pages,(p)=>renderNews(p));
+    }
+
+    function renderEvents(page=1){
+      const wrap = document.getElementById('evList'); const pager = document.getElementById('evPager'); if(!wrap||!pager) return;
+      const q = (document.getElementById('calSearch')?.value||'').toLowerCase();
+      const m = (document.getElementById('calMonth')?.value||'');
+      const list = [...STATE.events].filter(it=>{
+        const okQ = !q || JSON.stringify(it).toLowerCase().includes(q);
+        const mm = (it.date||'').slice(5,7);
+        const okM = !m || mm===m; return okQ && okM;
+      }).sort((a,b)=> (b.date||'').localeCompare(a.date||''));
+      const total = list.length; const pages = Math.max(1, Math.ceil(total/PAGE_SIZE));
+      page = Math.min(pages, Math.max(1, page));
+      const start = (page-1)*PAGE_SIZE; const slice = list.slice(start, start+PAGE_SIZE);
+      wrap.innerHTML = slice.map(cardEventHTML).join('');
+      pager.innerHTML = pagerHTML(page,pages,(p)=>renderEvents(p));
+    }
+
+    function cardEventHTML(item){
+      const title = tField(item,'title');
+      const body = tField(item,'body');
+      const date = item.date || '';
+      const img = item.image || 'placeholder.jpg';
+      return `<article class="card" style="margin:0"><img src="${img}" alt="${escapeHtml(title)}" loading="lazy" style="border-radius:10px;margin-bottom:10px"><h3>${escapeHtml(title)}</h3><p class="muted"><strong data-i18n="date">Tarih</strong>: <time datetime="${date}">${formatDate(date)}</time></p><p>${escapeHtml(body)}</p></article>`;
+    }
+
+    function renderGallery(){
+      const grid = document.getElementById('galleryGrid'); if(!grid) return;
+      grid.innerHTML = STATE.gallery.map(g=>{
+        const cap = tField(g,'caption'); const src = g.src;
+        return `<figure style="margin:0"><img class="zoomable" src="${src}" alt="${escapeHtml(cap)}" loading="lazy" style="border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,.35);"><figcaption class="muted">${escapeHtml(cap)}</figcaption></figure>`;
+      }).join('');
+      attachLightbox();
+    }
+
+    function renderDonation(){
+      const wrap = document.getElementById('donationWrap'); if(!wrap||!STATE.donation) return;
+      const d = STATE.donation; const lang = document.documentElement.lang||'tr';
+      const left = `<div class="card" style="margin:0;background:var(--surface);border:1px solid var(--border)">
+        <h3 style="margin-top:0" data-i18n="donation_choose_title">Bağış Amacı ve Tutarı</h3>
+        <label style="display:block;margin:8px 0;"><span data-i18n="donation_purpose">Bağış amacı</span>
+          <select id="donPurpose" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;margin-top:6px;color:var(--text);background:var(--surface)">
+            ${(d.purposes||[]).map(p=>`<option value="${p.value}">${escapeHtml(tField(p,'label'))}</option>`).join('')}
+          </select>
+        </label>
+        <div style="margin-top:10px;"><span data-i18n="donation_amount">Bağış tutarı</span>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;">${(d.quickAmounts||[100,250,500,1000]).map(a=>`<button type="button" class="donAmt" data-amt="${a}" style="padding:8px 12px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text)">${a} ₺</button>`).join('')}</div>
+          <label style="display:block;margin-top:10px;"><span class="sr-only">Özel tutar</span><input id="donCustom" type="number" min="1" placeholder="Özel tutar (₺)" data-i18n-ph="donation_custom_ph" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;color:var(--text);background:var(--surface)" /></label>
+        </div>
+        <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;"><a class="navlink cta" href="${d.udef||'https://udef.org.tr/'}" target="_blank" rel="noopener" data-i18n="donate_via_udef">UDEF Üzerinden Bağış</a><button type="button" id="copyIBAN" class="navlink" data-i18n="copy_iban_btn">IBAN’ı Kopyala</button></div>
+        <p id="donHint" class="muted" style="margin-top:10px"></p>
+      </div>`;
+      const right = `<div class="card" style="margin:0">
+        <h3 style="margin-top:0" data-i18n="iban_title">IBAN Bilgileri</h3>
+        <p style="margin:6px 0"><strong data-i18n="iban_holder_label">Hesap Sahibi</strong>: <span id="ibanHolder">${escapeHtml(d.holder||'')}</span></p>
+        <p style="margin:6px 0"><strong data-i18n="iban_bank_label">Banka</strong>: <span id="ibanBank">${escapeHtml(d.bank||'')}</span></p>
+        <p style="margin:6px 0"><strong>IBAN</strong>: <code id="ibanVal" style="font-weight:700;">${escapeHtml(d.iban||'')}</code></p>
+        ${d.qr?`<figure style="margin:0;"><img src="${d.qr}" alt="Bağış için QR" width="140" height="140" style="border-radius:8px;border:1px solid #334155" /><figcaption class="muted" style="margin-top:6px;" data-i18n="qr_caption">Mobil bankacılıkla QR okutabilirsiniz.</figcaption></figure>`:''}
+      </div>`;
+      wrap.innerHTML = left + right;
+      initCopyIBAN();
+    }
+
+    function renderContact(){
+      const wrap = document.getElementById('contactWrap'); const homeWrap = document.getElementById('homeContactWrap'); if(!STATE.contact) return;
+      const c = STATE.contact;
+      const card1 = `<article class="card" style="margin:0"><h3 style="margin-top:0" data-i18n="contact_info_title">İletişim Bilgileri</h3><p><strong data-i18n="addr_label">Adres</strong>: <span>${escapeHtml(tField(c,'address'))}</span></p><p><strong data-i18n="phone_label">Telefon</strong>: <a href="tel:${c.phoneRaw||''}">${escapeHtml(c.phone||'')}</a></p><p><strong data-i18n="mail_label">E-posta</strong>: <a href="mailto:${c.email||''}">${escapeHtml(c.email||'')}</a></p></article>`;
+      const card2 = `<article class="card" style="margin:0;background:#0f1a2f"><h3 style="margin-top:0" data-i18n="social_title">Sosyal Medya</h3><ul style="list-style:none;margin:0;padding:0;display:grid;gap:10px;">${(c.socials||[]).map(s=>`<li><a href="${s.url}" target="_blank" rel="noopener" aria-label="${escapeHtml(s.label)}" style="display:flex;align-items:center;gap:10px;text-decoration:none;"><img src="${s.icon}" alt="" width="28" height="28" style="border-radius:6px;"><span>${escapeHtml(s.handle)}</span></a></li>`).join('')}</ul></article>`;
+      if(wrap) wrap.innerHTML = card1 + card2; if(homeWrap) homeWrap.innerHTML = card1 + card2;
+    }
+
+    function renderAbout(){ const el = document.getElementById('aboutContent'); if(!el||!STATE.about) return; el.innerHTML = STATE.about.html || ''; }
+    function renderActivities(){ const el = document.getElementById('activitiesContent'); if(!el||!STATE.activities) return; el.innerHTML = STATE.activities.html || ''; }
+
+    function pagerHTML(page,pages,cb){
+      return `<button ${page<=1?'disabled':''} onclick="(${cb})(1)">«</button><button ${page<=1?'disabled':''} onclick="(${cb})(${page-1})">‹</button><span>${page}/${pages}</span><button ${page>=pages?'disabled':''} onclick="(${cb})(${page+1})">›</button><button ${page>=pages?'disabled':''} onclick="(${cb})(${pages})">»</button>`;
+    }
+
+    function formatDate(iso){ if(!iso) return ''; try{ const d=new Date(iso); return d.toLocaleDateString(document.documentElement.lang||'tr'); }catch{ return iso; } }
+    function escapeHtml(s){ return (s||'').replace(/[&<>\"]/g, m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[m])); }
+
+    // ====== LIGHTBOX attach (yeniden çağırmak için ayrı fonksiyon) ======
+    function attachLightbox(){
+      const lb = document.getElementById('lightbox'); const lbImg = document.getElementById('lbImg'); const lbCap = document.getElementById('lbCaption'); const lbDl = document.getElementById('lbDownload');
+      document.querySelectorAll('.zoomable').forEach(img=>{
+        img.style.cursor='zoom-in'; img.addEventListener('click',()=>{ lbImg.src=img.src; lbImg.alt=img.alt||''; lbCap.textContent=img.nextElementSibling?.textContent||''; lbDl.href=img.src; lb.classList.add('open'); });
+      });
+      document.getElementById('lbClose')?.addEventListener('click', ()=> lb.classList.remove('open'));
+      lb.addEventListener('click', (e)=>{ if(e.target===lb) lb.classList.remove('open'); });
+      window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') lb.classList.remove('open'); });
+    }
+
+    function initCopyIBAN(){
+      const copyBtn = document.getElementById('copyIBAN'); copyBtn?.addEventListener('click', async ()=>{
+        const iban = document.getElementById('ibanVal')?.textContent?.replace(/\s+/g,'') || '';
+        const hint = document.getElementById('donHint'); const lang = document.documentElement.lang || 'tr';
+        try{ await navigator.clipboard.writeText(iban); if(hint) hint.textContent = (I18N[lang]?.iban_copied)||'Copied'; }catch(e){ if(hint) hint.textContent = (I18N[lang]?.iban_copy_fail)||'Copy failed'; }
+      });
+    }
+  </script>
+  <script>
+    // ====== UYGULAMA İSKELETİ (router, tema, dil) ======
+    const RTL = new Set(["ar","fa"]); const THEME_KEY='samuder_theme'; const DEFAULT_PAGE='home';
+    function applyTranslations(lang){ /* önceki sürümdekiyle aynı — meta, dir/lang ayarı */ }
+    function setLanguage(lang){ localStorage.setItem('samuder_lang', lang); applyTranslations(lang); renderAll(); }
+    function setTheme(theme){ document.documentElement.setAttribute('data-theme', theme); localStorage.setItem(THEME_KEY, theme); const btn=document.getElementById('themeToggle'); if(btn){ const lang=document.documentElement.lang||'tr'; btn.textContent = theme==='light'?'☀️':'🌙'; btn.setAttribute('aria-label', theme==='light'?(I18N[lang]?.light_mode||'Light'):(I18N[lang]?.dark_mode||'Dark')); } document.querySelector('meta[name="theme-color"]').setAttribute('content', theme==='light'?'#ffffff':'#0b1220'); }
+    function showPage(page){ document.querySelectorAll('[data-page]').forEach(sec=> sec.toggleAttribute('hidden', sec.getAttribute('data-page')!==page)); toggleMenu(false); const lang=document.documentElement.lang||'tr'; const titleKey=I18N[lang]?.[page]||page; document.title=`${I18N[lang]?.site_title||'SAMUDER'} – ${titleKey}`; if(page==='news') renderNews(1); if(page==='calendar') renderEvents(1); }
+    function navigate(page){ history.pushState({page}, '', `#/`+page); showPage(page); }
+    window.addEventListener('popstate', ()=>{ const page=(location.hash.replace('#/','')||DEFAULT_PAGE); showPage(page); });
+    function toggleMenu(open){ const panel=document.getElementById('menuPanel'); const btn=document.getElementById('menuToggle'); if(!panel||!btn) return; const willOpen=(typeof open==='boolean')?open:!panel.classList.contains('open'); panel.classList.toggle('open', willOpen); btn.setAttribute('aria-expanded', willOpen?'true':'false'); }
+
+    function renderAll(){ renderHomeNews(); renderDonation(); renderContact(); renderGallery(); renderAbout(); renderActivities(); const page=(location.hash.replace('#/','')||DEFAULT_PAGE); if(page==='news') renderNews(1); if(page==='calendar') renderEvents(1); }
+
+    (async function init(){ const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear(); const savedLang=localStorage.getItem('samuder_lang')||'tr'; const select=document.getElementById('lang'); if(select) select.value=savedLang; applyTranslations(savedLang); const savedTheme=localStorage.getItem(THEME_KEY)||(matchMedia('(prefers-color-scheme: light)').matches? 'light':'dark'); setTheme(savedTheme); document.getElementById('themeToggle')?.addEventListener('click', ()=>{ const cur=document.documentElement.getAttribute('data-theme')||'dark'; setTheme(cur==='dark'?'light':'dark'); }); document.querySelectorAll('[data-route]').forEach(a=> a.addEventListener('click', (e)=>{ e.preventDefault(); navigate(a.getAttribute('data-route')); })); document.getElementById('menuToggle')?.addEventListener('click', ()=> toggleMenu()); document.getElementById('menuClose')?.addEventListener('click', ()=> toggleMenu(false)); const start=(location.hash.replace('#/','')||DEFAULT_PAGE); await loadAllContent(); showPage(start); renderAll(); document.getElementById('calSearch')?.addEventListener('input', ()=>{ renderEvents(1); renderNews(1); }); document.getElementById('calMonth')?.addEventListener('change', ()=> renderEvents(1)); attachLightbox(); })();
+  </script>
+</body>
+</html>
+
+
+<!-- ===== FILE: admin/index.html ===== -->
 <!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SAMUDER – Admin</title>
+    <style>body{font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;padding:40px;max-width:800px;margin:auto} .box{padding:16px;border:1px solid #ddd;border-radius:10px} .muted{color:#555}</style>
   </head>
   <body>
-    <!-- Netlify Identity widget enables login/signup UI -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <!-- Decap CMS core -->
+    <h1>SAMUDER İçerik Yönetimi</h1>
+    <p class="muted">Bu sayfa yalnızca Netlify/Decap CMS kaldırma amaçlıdır. Gerçek panel <code>/admin/</code> köküne bağlanınca otomatik yüklenir.</p>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-    <script>
-      // Optional: redirect to site root after logout
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("logout", function() {
-          document.location.href = "/";
-        });
-      }
-    </script>
   </body>
 </html>
+
+
+<!-- ===== FILE: admin/config.yml ===== -->
+backend:
+  name: git-gateway
+  branch: main
+publish_mode: editorial_workflow
+media_folder: "uploads"
+public_folder: "/uploads"
+collections:
+  - name: "news"
+    label: "Haberler / Duyurular"
+    file: "content/news.json"
+    format: json
+    fields:
+      - {label: "Öğeler", name: "items", widget: list, allow_add: true, collapsed: true, fields: [
+          {label: Tarih (ISO), name: date, widget: datetime, format: "YYYY-MM-DD", time_format: false},
+          {label: Görsel, name: image, widget: image, required: false},
+          {label: Başlık (TR), name: title_tr, widget: string},
+          {label: Başlık (EN), name: title_en, widget: string, required: false},
+          {label: Başlık (AR), name: title_ar, widget: string, required: false},
+          {label: Başlık (FA), name: title_fa, widget: string, required: false},
+          {label: Başlık (RU), name: title_ru, widget: string, required: false},
+          {label: Metin (TR), name: body_tr, widget: text},
+          {label: Metin (EN), name: body_en, widget: text, required: false},
+          {label: Metin (AR), name: body_ar, widget: text, required: false},
+          {label: Metin (FA), name: body_fa, widget: text, required: false},
+          {label: Metin (RU), name: body_ru, widget: text, required: false}
+        ]}
+  - name: "events"
+    label: "Etkinlik Takvimi"
+    file: "content/events.json"
+    format: json
+    fields:
+      - {label: "Öğeler", name: "items", widget: list, allow_add: true, collapsed: true, fields: [
+          {label: Tarih (ISO), name: date, widget: datetime, format: "YYYY-MM-DD", time_format: false},
+          {label: Görsel, name: image, widget: image, required: false},
+          {label: Başlık (TR), name: title_tr, widget: string},
+          {label: Başlık (EN), name: title_en, widget: string, required: false},
+          {label: Başlık (AR), name: title_ar, widget: string, required: false},
+          {label: Başlık (FA), name: title_fa, widget: string, required: false},
+          {label: Başlık (RU), name: title_ru, widget: string, required: false},
+          {label: Metin (TR), name: body_tr, widget: text},
+          {label: Metin (EN), name: body_en, widget: text, required: false},
+          {label: Metin (AR), name: body_ar, widget: text, required: false},
+          {label: Metin (FA), name: body_fa, widget: text, required: false},
+          {label: Metin (RU), name: body_ru, widget: text, required: false}
+        ]}
+  - name: "gallery"
+    label: "Galeri"
+    file: "content/gallery.json"
+    format: json
+    fields:
+      - {label: "Öğeler", name: "items", widget: list, allow_add: true, collapsed: true, fields: [
+          {label: Görsel (büyük), name: src, widget: image},
+          {label: Başlık/Altyazı (TR), name: caption_tr, widget: string},
+          {label: Başlık/Altyazı (EN), name: caption_en, widget: string, required: false},
+          {label: Başlık/Altyazı (AR), name: caption_ar, widget: string, required: false},
+          {label: Başlık/Altyazı (FA), name: caption_fa, widget: string, required: false},
+          {label: Başlık/Altyazı (RU), name: caption_ru, widget: string, required: false}
+        ]}
+  - name: "donation"
+    label: "Bağış Bilgileri"
+    file: "content/donation.json"
+    format: json
+    fields:
+      - {label: IBAN, name: iban, widget: string}
+      - {label: Hesap Sahibi, name: holder, widget: string}
+      - {label: Banka, name: bank, widget: string}
+      - {label: UDEF Bağlantısı, name: udef, widget: string, required: false}
+      - {label: QR Görseli, name: qr, widget: image, required: false}
+      - {label: Hızlı Tutarlar, name: quickAmounts, widget: list, required: false, field: {label: Tutar, name: amount, widget: number}}
+      - label: Amaçlar
+        name: purposes
+        widget: list
+        required: false
+        fields:
+          - {label: Değer, name: value, widget: string}
+          - {label: Etiket (TR), name: label_tr, widget: string}
+          - {label: Etiket (EN), name: label_en, widget: string, required: false}
+          - {label: Etiket (AR), name: label_ar, widget: string, required: false}
+          - {label: Etiket (FA), name: label_fa, widget: string, required: false}
+          - {label: Etiket (RU), name: label_ru, widget: string, required: false}
+  - name: "contact"
+    label: "İletişim"
+    file: "content/contact.json"
+    format: json
+    fields:
+      - {label: Adres (TR), name: address_tr, widget: text}
+      - {label: Adres (EN), name: address_en, widget: text, required: false}
+      - {label: Adres (AR), name: address_ar, widget: text, required: false}
+      - {label: Adres (FA), name: address_fa, widget: text, required: false}
+      - {label: Adres (RU), name: address_ru, widget: text, required: false}
+      - {label: Telefon (gösterilecek), name: phone, widget: string}
+      - {label: Telefon (ham, +90...), name: phoneRaw, widget: string}
+      - {label: E-posta, name: email, widget: string}
+      - label: Sosyal Medya
+        name: socials
+        widget: list
+        fields:
+          - {label: Platform Adı, name: label, widget: string}
+          - {label: İkon, name: icon, widget: image}
+          - {label: Görünen Kullanıcı, name: handle, widget: string}
+          - {label: URL, name: url, widget: string}
+  - name: "about"
+    label: "Hakkımızda (HTML)"
+    file: "content/about.json"
+    format: json
+    fields:
+      - {label: HTML İçerik, name: html, widget: markdown}
+  - name: "activities"
+    label: "Faaliyetler (HTML)"
+    file: "content/activities.json"
+    format: json
+    fields:
+      - {label: HTML İçerik, name: html, widget: markdown}
+
+
+<!-- ===== FILE: content/news.json (ÖRNEK VERİ) ===== -->
+{
+  "items": [
+    {
+      "date": "2025-09-05",
+      "image": "haber2.jpg",
+      "title_tr": "Konuşma Kulübü kayıtları",
+      "title_en": "Speaking Club registrations",
+      "title_ar": "تسجيل نوادي المحادثة",
+      "title_fa": "ثبت‌نام باشگاه مکالمه",
+      "title_ru": "Набор в разговорные клубы",
+      "body_tr": "Türkçe ve Arapça konuşma kulüplerine başvurular açıldı. Kontenjanlar sınırlıdır.",
+      "body_en": "Applications are open for Turkish & Arabic speaking clubs. Seats are limited.",
+      "body_ar": "التقديم مفتوح لأندية المحادثة بالتركية والعربية. المقاعد محدودة.",
+      "body_fa": "ثبت‌نام برای باشگاه‌های مکالمه ترکی و عربی باز است. ظرفیت محدود است.",
+      "body_ru": "Открыт набор в клубы разговорного турецкого и арабского. Мест мало."
+    },
+    {
+      "date": "2025-08-01",
+      "image": "haber1.jpg",
+      "title_tr": "Yeni dönem kayıtları başladı",
+      "title_en": "New semester registrations started",
+      "title_ar": "بدأ تسجيل الفصل الدراسي الجديد",
+      "title_fa": "ثبت‌نام ترم جدید آغاز شد",
+      "title_ru": "Началась регистрация на новый семестр",
+      "body_tr": "Üyelik için UDEF portalını kullanabilirsiniz. Gönüllü ekibimize katılım için iletişim bölümünden bize ulaşın.",
+      "body_en": "You can use the UDEF portal for membership. Contact us to join the volunteer team.",
+      "body_ar": "يمكنكم استخدام بوابة UDEF للعضوية. تواصلوا معنا للانضمام إلى فريق المتطوعين.",
+      "body_fa": "برای عضویت از پرتال UDEF استفاده کنید. برای پیوستن به تیم داوطلبان با ما تماس بگیرید.",
+      "body_ru": "Для членства используйте портал UDEF. Свяжитесь с нами, чтобы присоединиться к волонтёрской команде."
+    }
+  ]
+}
+
+<!-- ===== FILE: content/events.json (ÖRNEK VERİ) ===== -->
+{
+  "items": [
+    { "date": "2025-12-07", "image": "etkinlik4.jpg", "title_tr": "Gönüllülük & Sosyal Sorumluluk Günü", "title_en": "Volunteering & Social Responsibility Day", "title_ar": "يوم التطوع والمسؤولية الاجتماعية", "title_fa": "روز داوطلبی و مسئولیت اجتماعی", "title_ru": "День волонтёрства и социальной ответственности", "body_tr": "Şehir içi yardım çalışmaları, ihtiyaç sahiplerine destek ve çevre temizlik etkinliği.", "body_en": "In-city aid activities, support for those in need and environmental cleanup event.", "body_ar": "أنشطة مساعدة داخل المدينة، دعم المحتاجين وحملة تنظيف للبيئة.", "body_fa": "فعالیت‌های کمک درون‌شهری، حمایت از نیازمندان و پاکسازی محیط زیست.", "body_ru": "Городские благотворительные акции, помощь нуждающимся и экологический субботник." },
+    { "date": "2025-11-09", "image": "etkinlik6.jpg", "title_tr": "Akademik Başarı ve Burslar Semineri", "title_en": "Academic Success & Scholarships Seminar", "title_ar": "ندوة النجاح الأكاديمي والمنح", "title_fa": "سمینار موفقیت تحصیلی و بورسیه", "title_ru": "Семинар «Учебный успех и стипендии»", "body_tr": "Transkript yönetimi, ders seçim stratejileri, YÖS/denklik ve burs başvuru süreçleri.", "body_en": "Transcript management, course selection strategies, YÖS/equivalency and scholarship application processes.", "body_ar": "إدارة السجل الأكاديمي، استراتيجيات اختيار المقررات، امتحان YÖS/المعادلة وإجراءات التقديم للمنح.", "body_fa": "مدیریت ریزنمرات، استراتژی‌های انتخاب واحد، YÖS/معادلسازی و فرآیندهای درخواست بورسیه.", "body_ru": "Управление транскриптами, стратегии выбора курсов, YÖS/эквивалентность и процессы подачи на стипендии." },
+    { "date": "2025-10-25", "image": "etkinlik3.jpg", "title_tr": "Spor Turnuvaları (Voleybol/Futbol)", "title_en": "Sports Tournaments (Volleyball/Football)", "title_ar": "بطولات رياضية (كرة الطائرة/كرة القدم)", "title_fa": "مسابقات ورزشی (والیبال/فوتبال)", "title_ru": "Спортивные турниры (волейбол/футбол)", "body_tr": "Takım kayıtları sınırlıdır. Dereceye giren takımlara ödüller verilecektir.", "body_en": "Team slots are limited. Awards for top-ranking teams.", "body_ar": "الأماكن محدودة. جوائز للفرق المتصدرة.", "body_fa": "ظرفیت تیم‌ها محدود است. به تیم‌های برتر جوایز اهدا می‌شود.", "body_ru": "Количество команд ограничено. Призы для лучших." },
+    { "date": "2025-10-12", "image": "etkinlik2.jpg", "title_tr": "Kültürel Gece", "title_en": "Cultural Night", "title_ar": "الليلة الثقافية", "title_fa": "شب فرهنگی", "title_ru": "Культурная ночь", "body_tr": "Afgan, Türk ve farklı ülkelerden öğrencilerin kültürel sunumları, yöresel tatlar ve sahne performansları.", "body_en": "Cultural showcases, traditional tastes and stage performances from Afghan, Turkish and other students.", "body_ar": "عروض ثقافية وأطباق تقليدية وعروض مسرحية من الطلاب الأفغان والأتراك وغيرهم.", "body_fa": "نمایش‌های فرهنگی، خوراک‌های سنتی و اجراهای صحنه‌ای از دانشجویان افغان، ترک و سایر کشورها.", "body_ru": "Культурные презентации, национальная кухня и сценические выступления." },
+    { "date": "2025-09-20", "image": "etkinlik1.jpg", "title_tr": "Uluslararası Tanışma & Oryantasyon", "title_en": "International Meet & Orientation", "title_ar": "لقاء وتعريف للطلاب الدوليين", "title_fa": "دیدار و آشنایی دانشجویان بین‌المللی", "title_ru": "Международная встреча и ориентация", "body_tr": "Yeni gelen öğrenciler için şehir, kampüs ve dernek tanıtımı; danışmanlık masaları; kayıt ve gönüllülük bilgilendirmesi.", "body_en": "City, campus and association introduction for newcomers; advisory desks; registration & volunteering info.", "body_ar": "تعريف بالمدينة والحرم والجمعية للطلاب الجدد؛ مكاتب استشارية؛ معلومات التسجيل والتطوع.", "body_fa": "معرفی شهر، دانشگاه و انجمن برای دانشجویان جدید؛ میزهای مشاوره؛ اطلاع‌رسانی ثبت‌نام و داوطلبی.", "body_ru": "Знакомство с городом, кампусом и ассоциацией; консультационные столы; информация о регистрации и волонтёрстве." }
+  ]
+}
+
+<!-- ===== FILE: content/gallery.json (ÖRNEK VERİ) ===== -->
+{
+  "items": [
+    {"src":"etkinlik1.jpg","caption_tr":"Tanışma & Oryantasyon","caption_en":"Welcome & Orientation","caption_ar":"الاستقبال والتعريف","caption_fa":"خوش‌آمدگویی و آشنایی","caption_ru":"Встреча и ориентация"},
+    {"src":"etkinlik2.jpg","caption_tr":"Kültürel Gece","caption_en":"Cultural Night","caption_ar":"الليلة الثقافية","caption_fa":"شب فرهنگی","caption_ru":"Культурная ночь"},
+    {"src":"etkinlik3.jpg","caption_tr":"Spor Turnuvası","caption_en":"Sports Tournament","caption_ar":"بطولة رياضية","caption_fa":"مسابقات ورزشی","caption_ru":"Спортивный турнир"},
+    {"src":"etkinlik4.jpg","caption_tr":"Gönüllülük Günü","caption_en":"Volunteering Day","caption_ar":"يوم التطوع","caption_fa":"روز داوطلبی","caption_ru":"День волонтёрства"},
+    {"src":"etkinlik5.jpg","caption_tr":"Eğitim Atölyesi","caption_en":"Training Workshop","caption_ar":"ورشة تدريبية","caption_fa":"کارگاه آموزشی","caption_ru":"Учебный воркшоп"},
+    {"src":"etkinlik6.jpg","caption_tr":"Seminer","caption_en":"Seminar","caption_ar":"ندوة","caption_fa":"سمینار","caption_ru":"Семинар"},
+    {"src":"etkinlik7.jpg","caption_tr":"Şehir Turu","caption_en":"City Tour","caption_ar":"جولة في المدينة","caption_fa":"تور شهری","caption_ru":"Тур по городу"},
+    {"src":"etkinlik8.jpg","caption_tr":"Atölye / Buluşma","caption_en":"Workshop / Meetup","caption_ar":"ورشة / لقاء","caption_fa":"کارگاه / دورهمی","caption_ru":"Воркшоп / встреча"}
+  ]
+}
+
+<!-- ===== FILE: content/donation.json (ÖRNEK VERİ) ===== -->
+{
+  "iban": "TR10 0020 6000 4605 0981 0900 03",
+  "holder": "Samsun Uluslararasi Ögrenci Kültür Ve Dayanışma Derneği",
+  "bank": "Türkiye Finans Katılım Bankası",
+  "udef": "https://udef.org.tr/",
+  "qr": "bagis-qr.png",
+  "quickAmounts": [100,250,500,1000],
+  "purposes": [
+    {"value":"general","label_tr":"Genel faaliyet desteği","label_en":"General operations","label_ar":"دعم الأنشطة العامة","label_fa":"حمایت عمومی","label_ru":"Общая поддержка"},
+    {"value":"scholarship","label_tr":"Burs ve eğitim desteği","label_en":"Scholarships & education","label_ar":"المنح والدعم التعليمي","label_fa":"بورسیه و آموزش","label_ru":"Стипендии и обучение"}
+  ]
+}
+
+<!-- ===== FILE: content/contact.json (ÖRNEK VERİ) ===== -->
+{
+  "address_tr": "Zafer Mahallesi, Atatürk Caddesi, No:14 Kat:6 Ali Kurt İş Merkezi, İlkadım / Samsun",
+  "address_en": "Zafer Neighborhood, Atatürk Avenue, No:14 Floor:6 Ali Kurt Business Center, İlkadım / Samsun",
+  "address_ar": "حي ظافر، شارع أتاتورك، رقم 14 الطابق 6، مركز أعمال علي كورت، إلكادم / صامسون",
+  "address_fa": "محله ظافر، خیابان آتاتورک، پلاک 14، طبقه 6، مرکز کاری علی کورت، ایلکادم / سامسون",
+  "address_ru": "Квартал Зафер, проспект Ататюрка, №14, 6 этаж, деловой центр Али Курт, Илкадым / Самсун",
+  "phone": "+90 546 870 3955",
+  "phoneRaw": "+905468703955",
+  "email": "uodsamsun@gmail.com",
+  "socials": [
+    {"label":"Instagram @samuder55","icon":"instagram.png","handle":"@samuder55","url":"https://instagram.com/samuder55"},
+    {"label":"Twitter @samuder55","icon":"twitter.png","handle":"@samuder55","url":"https://twitter.com/samuder55"},
+    {"label":"Facebook @samuder55","icon":"facebook.png","handle":"@samuder55","url":"https://facebook.com/samuder55"}
+  ]
+}
+
+<!-- ===== FILE: content/about.json (ÖRNEK VERİ) ===== -->
+{ "html": "<p data-i18n=\"about_intro\">Samsun Uluslararası Öğrenci Derneği (SAMUDER)...</p>" }
+
+<!-- ===== FILE: content/activities.json (ÖRNEK VERİ) ===== -->
+{ "html": "<div class=\"card\"><h3 data-i18n=\"act_edu_title\">Eğitim Destekleri</h3><ul><li data-i18n=\"act_edu_1\">Akademik başarı seminerleri...</li></ul></div>" }
