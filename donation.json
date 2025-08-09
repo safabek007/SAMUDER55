@@ -1,0 +1,31 @@
+{
+  "iban": "TR10 0020 6000 4605 0981 0900 03",
+  "holder": "Samsun Uluslararasi Ögrenci Kültür Ve Dayanışma Derneği",
+  "bank": "Türkiye Finans Katılım Bankası",
+  "udef": "https://udef.org.tr/",
+  "qr": "uploads/bagis-qr.png",
+  "quickAmounts": [
+    100,
+    250,
+    500,
+    1000
+  ],
+  "purposes": [
+    {
+      "value": "general",
+      "label_tr": "Genel faaliyet desteği",
+      "label_en": "General operations",
+      "label_ar": "دعم الأنشطة العامة",
+      "label_fa": "حمایت عمومی",
+      "label_ru": "Общая поддержка"
+    },
+    {
+      "value": "scholarship",
+      "label_tr": "Burs ve eğitim desteği",
+      "label_en": "Scholarships & education",
+      "label_ar": "المنح والدعم التعليمي",
+      "label_fa": "بورسیه و آموزش",
+      "label_ru": "Стипендии и обучение"
+    }
+  ]
+}

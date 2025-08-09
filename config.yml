@@ -1,0 +1,113 @@
+backend:
+  name: git-gateway
+  branch: main
+publish_mode: editorial_workflow
+media_folder: "uploads"
+public_folder: "/uploads"
+collections:
+  - name: "news"
+    label: "Haberler / Duyurular"
+    file: "content/news.json"
+    format: json
+    fields:
+      - {label: "Öğeler", name: "items", widget: list, allow_add: true, collapsed: true, fields: [
+          {label: "Tarih (ISO)", name: date, widget: datetime, format: "YYYY-MM-DD", time_format: false},
+          {label: "Görsel", name: image, widget: image, required: false},
+          {label: "Başlık (TR)", name: title_tr, widget: string},
+          {label: "Başlık (EN)", name: title_en, widget: string, required: false},
+          {label: "Başlık (AR)", name: title_ar, widget: string, required: false},
+          {label: "Başlık (FA)", name: title_fa, widget: string, required: false},
+          {label: "Başlık (RU)", name: title_ru, widget: string, required: false},
+          {label: "Metin (TR)", name: body_tr, widget: text},
+          {label: "Metin (EN)", name: body_en, widget: text, required: false},
+          {label: "Metin (AR)", name: body_ar, widget: text, required: false},
+          {label: "Metin (FA)", name: body_fa, widget: text, required: false},
+          {label: "Metin (RU)", name: body_ru, widget: text, required: false}
+        ]}
+  - name: "events"
+    label: "Etkinlik Takvimi"
+    file: "content/events.json"
+    format: json
+    fields:
+      - {label: "Öğeler", name: "items", widget: list, allow_add: true, collapsed: true, fields: [
+          {label: "Tarih (ISO)", name: date, widget: datetime, format: "YYYY-MM-DD", time_format: false},
+          {label: "Görsel", name: image, widget: image, required: false},
+          {label: "Başlık (TR)", name: title_tr, widget: string},
+          {label: "Başlık (EN)", name: title_en, widget: string, required: false},
+          {label: "Başlık (AR)", name: title_ar, widget: string, required: false},
+          {label: "Başlık (FA)", name: title_fa, widget: string, required: false},
+          {label: "Başlık (RU)", name: title_ru, widget: string, required: false},
+          {label: "Metin (TR)", name: body_tr, widget: text},
+          {label: "Metin (EN)", name: body_en, widget: text, required: false},
+          {label: "Metin (AR)", name: body_ar, widget: text, required: false},
+          {label: "Metin (FA)", name: body_fa, widget: text, required: false},
+          {label: "Metin (RU)", name: body_ru, widget: text, required: false}
+        ]}
+  - name: "gallery"
+    label: "Galeri"
+    file: "content/gallery.json"
+    format: json
+    fields:
+      - {label: "Öğeler", name: "items", widget: list, allow_add: true, collapsed: true, fields: [
+          {label: "Görsel (büyük)", name: src, widget: image},
+          {label: "Başlık/Altyazı (TR)", name: caption_tr, widget: string},
+          {label: "Başlık/Altyazı (EN)", name: caption_en, widget: string, required: false},
+          {label: "Başlık/Altyazı (AR)", name: caption_ar, widget: string, required: false},
+          {label: "Başlık/Altyazı (FA)", name: caption_fa, widget: string, required: false},
+          {label: "Başlık/Altyazı (RU)", name: caption_ru, widget: string, required: false}
+        ]}
+  - name: "donation"
+    label: "Bağış Bilgileri"
+    file: "content/donation.json"
+    format: json
+    fields:
+      - {label: "IBAN", name: iban, widget: string}
+      - {label: "Hesap Sahibi", name: holder, widget: string}
+      - {label: "Banka", name: bank, widget: string}
+      - {label: "UDEF Bağlantısı", name: udef, widget: string, required: false}
+      - {label: "QR Görseli", name: qr, widget: image, required: false}
+      - {label: "Hızlı Tutarlar", name: quickAmounts, widget: list, required: false, field: {label: Tutar, name: amount, widget: number}}
+      - label: "Amaçlar"
+        name: purposes
+        widget: list
+        required: false
+        fields:
+          - {label: "Değer", name: value, widget: string}
+          - {label: "Etiket (TR)", name: label_tr, widget: string}
+          - {label: "Etiket (EN)", name: label_en, widget: string, required: false}
+          - {label: "Etiket (AR)", name: label_ar, widget: string, required: false}
+          - {label: "Etiket (FA)", name: label_fa, widget: string, required: false}
+          - {label: "Etiket (RU)", name: label_ru, widget: string, required: false}
+  - name: "contact"
+    label: "İletişim"
+    file: "content/contact.json"
+    format: json
+    fields:
+      - {label: "Adres (TR)", name: address_tr, widget: text}
+      - {label: "Adres (EN)", name: address_en, widget: text, required: false}
+      - {label: "Adres (AR)", name: address_ar, widget: text, required: false}
+      - {label: "Adres (FA)", name: address_fa, widget: text, required: false}
+      - {label: "Adres (RU)", name: address_ru, widget: text, required: false}
+      - {label: "Telefon (gösterilecek)", name: phone, widget: string}
+      - {label: "Telefon (ham, +90...)", name: phoneRaw, widget: string}
+      - {label: "E-posta", name: email, widget: string}
+      - label: "Sosyal Medya"
+        name: socials
+        widget: list
+        fields:
+          - {label: "Platform Adı", name: label, widget: string}
+          - {label: "İkon", name: icon, widget: image}
+          - {label: "Görünen Kullanıcı", name: handle, widget: string}
+          - {label: "URL", name: url, widget: string}
+  - name: "about"
+    label: "Hakkımızda (HTML)"
+    file: "content/about.json"
+    format: json
+    fields:
+      - {label: "HTML İçerik", name: html, widget: markdown}
+  - name: "activities"
+    label: "Faaliyetler (HTML)"
+    file: "content/activities.json"
+    format: json
+    fields:
+      - {label: "HTML İçerik", name: html, widget: markdown}

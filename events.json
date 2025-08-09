@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "date": "2025-12-07",
+      "image": "uploads/etkinlik4.jpg",
+      "title_tr": "Gönüllülük & Sosyal Sorumluluk Günü",
+      "title_en": "Volunteering & Social Responsibility Day",
+      "title_ar": "يوم التطوع والمسؤولية الاجتماعية",
+      "title_fa": "روز داوطلبی و مسئولیت اجتماعی",
+      "title_ru": "День волонтёрства и социальной ответственности",
+      "body_tr": "Şehir içi yardım çalışmaları, ihtiyaç sahiplerine destek ve çevre temizlik etkinliği.",
+      "body_en": "In-city aid activities, support for those in need and environmental cleanup event.",
+      "body_ar": "أنشطة مساعدة داخل المدينة، دعم المحتاجين وحملة تنظيف للبيئة.",
+      "body_fa": "فعالیت‌های کمک درون‌شهری، حمایت از نیازمندان و پاکسازی محیط زیست.",
+      "body_ru": "Городские благотворительные акции, помощь нуждающимся и экологический субботник."
+    },
+    {
+      "date": "2025-11-09",
+      "image": "uploads/etkinlik6.jpg",
+      "title_tr": "Akademik Başarı ve Burslar Semineri",
+      "title_en": "Academic Success & Scholarships Seminar",
+      "title_ar": "ندوة النجاح الأكاديمي والمنح",
+      "title_fa": "سمینار موفقیت تحصیلی و بورسیه",
+      "title_ru": "Семинар «Учебный успех и стипендии»",
+      "body_tr": "Transkript yönetimi, ders seçim stratejileri, YÖS/denklik ve burs başvuru süreçleri.",
+      "body_en": "Transcript management, course selection strategies, YÖS/equivalency and scholarship application processes.",
+      "body_ar": "إدارة السجل الأكاديمي، استراتيجيات اختيار المقررات، امتحان YÖS/المعادلة وإجراءات التقديم للمنح.",
+      "body_fa": "مدیریت ریزنمرات، استراتژی‌های انتخاب واحد، YÖS/معادلسازی و فرآیندهای درخواست بورسیه.",
+      "body_ru": "Управление транскриптами, стратегии выбора курсов, YÖS/эквивалентность и процессы подачи на стипендии."
+    }
+  ]
+}

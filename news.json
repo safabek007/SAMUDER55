@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "date": "2025-09-05",
+      "image": "uploads/haber2.jpg",
+      "title_tr": "Konuşma Kulübü kayıtları",
+      "title_en": "Speaking Club registrations",
+      "title_ar": "تسجيل نوادي المحادثة",
+      "title_fa": "ثبت‌نام باشگاه مکالمه",
+      "title_ru": "Набор в разговорные клубы",
+      "body_tr": "Türkçe ve Arapça konuşma kulüplerine başvurular açıldı. Kontenjanlar sınırlıdır.",
+      "body_en": "Applications are open for Turkish & Arabic speaking clubs. Seats are limited.",
+      "body_ar": "التقديم مفتوح لأندية المحادثة بالتركية والعربية. المقاعد محدودة.",
+      "body_fa": "ثبت‌نام برای باشگاه‌های مکالمه ترکی و عربی باز است. ظرفیت محدود است.",
+      "body_ru": "Открыт набор в клубы разговорного турецкого и арабского. Мест мало."
+    },
+    {
+      "date": "2025-08-01",
+      "image": "uploads/haber1.jpg",
+      "title_tr": "Yeni dönem kayıtları başladı",
+      "title_en": "New semester registrations started",
+      "title_ar": "بدأ تسجيل الفصل الدراسي الجديد",
+      "title_fa": "ثبت‌نام ترم جدید آغاز شد",
+      "title_ru": "Началась регистрация на новый семестр",
+      "body_tr": "Üyelik için UDEF portalını kullanabilirsiniz. Gönüllü ekibimize katılım için iletişim bölümünden bize ulaşın.",
+      "body_en": "You can use the UDEF portal for membership. Contact us to join the volunteer team.",
+      "body_ar": "يمكنكم استخدام بوابة UDEF للعضوية. تواصلوا معنا للانضمام إلى فريق المتطوعين.",
+      "body_fa": "برای عضویت از پرتال UDEF استفاده کنید. برای پیوستن به تیم داوطلبان با ما تماس بگیرید.",
+      "body_ru": "Для членства используйте портал UDEF. Свяжитесь с нами, чтобы присоединиться к волонтёрской команде."
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "items": [
+    {
+      "src": "uploads/etkinlik1.jpg",
+      "caption_tr": "Tanışma & Oryantasyon",
+      "caption_en": "Welcome & Orientation",
+      "caption_ar": "الاستقبال والتعريف",
+      "caption_fa": "خوش‌آمدگویی و آشنایی",
+      "caption_ru": "Встреча и ориентация"
+    },
+    {
+      "src": "uploads/etkinlik2.jpg",
+      "caption_tr": "Kültürel Gece",
+      "caption_en": "Cultural Night",
+      "caption_ar": "الليلة الثقافية",
+      "caption_fa": "شب فرهنگی",
+      "caption_ru": "Культурная ночь"
+    }
+  ]
+}

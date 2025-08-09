@@ -1,0 +1,30 @@
+{
+  "address_tr": "Zafer Mahallesi, Atatürk Caddesi, No:14 Kat:6 Ali Kurt İş Merkezi, İlkadım / Samsun",
+  "address_en": "Zafer Neighborhood, Atatürk Avenue, No:14 Floor:6 Ali Kurt Business Center, İlkadım / Samsun",
+  "address_ar": "حي ظافر، شارع أتاتورك، رقم 14 الطابق 6، مركز أعمال علي كورت، إلكادم / صامسون",
+  "address_fa": "محله ظافر، خیابان آتاتورک، پلاک 14، طبقه 6، مرکز کاری علی کورت، ایلکادم / سامسون",
+  "address_ru": "Квартал Зафер, проспект Ататюрка, №14, 6 этаж, деловой центр Али Курт, Илкадым / Самсун",
+  "phone": "+90 546 870 3955",
+  "phoneRaw": "+905468703955",
+  "email": "uodsamsun@gmail.com",
+  "socials": [
+    {
+      "label": "Instagram @samuder55",
+      "icon": "uploads/instagram.png",
+      "handle": "@samuder55",
+      "url": "https://instagram.com/samuder55"
+    },
+    {
+      "label": "Twitter @samuder55",
+      "icon": "uploads/twitter.png",
+      "handle": "@samuder55",
+      "url": "https://twitter.com/samuder55"
+    },
+    {
+      "label": "Facebook @samuder55",
+      "icon": "uploads/facebook.png",
+      "handle": "@samuder55",
+      "url": "https://facebook.com/samuder55"
+    }
+  ]
+}
